@@ -25,6 +25,8 @@
 -- 		WHEN pos IN ('P', 'C') THEN 'Battery'
 -- 	END
 
+
+-- -- Better solution
 -- WITH PositionGroups AS (
 --     SELECT
 --         pos,
@@ -45,7 +47,22 @@
 
 -- Find the average number of strikeouts per game by decade since 1920. Round the numbers you report to 2 decimal places. Do the same for home runs per game. Do you see any trends? (Hint: For this question, you might find it helpful to look at the generate_series function (https://www.postgresql.org/docs/9.1/functions-srf.html). If you want to see an example of this in action, check out this DataCamp video: https://campus.datacamp.com/courses/exploratory-data-analysis-in-sql/summarizing-and-aggregating-numeric-data?ex=6)
 
-select * from batting limit 5
+-- SELECT
+--     FLOOR(yearid / 10) * 10 AS decade_start,
+--     FLOOR(yearid / 10) * 10 + 9 AS decade_end,
+--     ROUND(AVG(hr),2) AS homeruns_per_decade,
+-- 	ROUND(AVG(so),2) AS avg_strikeouts_per_decade
+-- FROM pitching
+-- GROUP BY FLOOR(yearid / 10)
+-- ORDER BY decade_start ASC
+
+
+-- Find the player who had the most success stealing bases in 2016, where success is measured as the percentage of stolen base attempts which are successful. (A stolen base attempt results either in a stolen base or being caught stealing.) Consider only players who attempted at least 20 stolen bases. Report the players' names, number of stolen bases, number of attempts, and stolen base percentage.
+
+SELECT * FROM batting limit 5
+
+
+
 
 
 
